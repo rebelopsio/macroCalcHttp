@@ -9,7 +9,20 @@ namespace MacroCalcHttp
 
         public static double BMR(string Sex, int Age, int HeightInches, int Weight)
         {
-            if (Sex.ToUpper() == "MALE")
+            double BMR = 0.0;
+            switch (Sex.ToUpper())
+            {
+                case "MALE":
+                    BMR = (10 * (Weight / 2.2)) + (6.25 * (HeightInches * 2.54)) -
+                          ((5 * Age) + 5); //  Mifflin-St. Jeor formula
+                    break;
+                case "FEMALE":
+                    BMR = (10 * (Weight / 2.2)) + (6.25 * (HeightInches * 2.54)) - ((5 * Age) + 5) -
+                          161; //  Mifflin-St. Jeor formula
+                    break;
+            }
+            return BMR;
+            /*if (Sex.ToUpper() == "MALE")
             {
                 double BMR = (10 * (Weight / 2.2)) + (6.25 * (HeightInches * 2.54)) -
                              ((5 * Age) + 5); //  Mifflin-St. Jeor formula
@@ -26,7 +39,7 @@ namespace MacroCalcHttp
             {
                 double BMR = 0.0;
                 return BMR;
-            }
+            }*/
         }
         
         public static double Cals(double BMR, string type)
