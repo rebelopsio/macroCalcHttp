@@ -29,22 +29,22 @@ namespace MacroCalcHttp
             sex = sex ?? data?.sex;
 
             int bMR = Convert.ToInt32(Calculations.BMR(sex, age, heightInches, weight));
-            int rDayCals = Convert.ToInt32(Calculations.restDayCals(bMR));
-            int lDayCals = Convert.ToInt32(Calculations.lightDayCals(bMR));
-            int mDayCals = Convert.ToInt32(Calculations.modDayCals(bMR));
-            int hDayCals = Convert.ToInt32(Calculations.hardDayCals(bMR));
+            int rDayCals = Convert.ToInt32(Calculations.Cals(bMR, "rest"));
+            int lDayCals = Convert.ToInt32(Calculations.Cals(bMR, "light"));
+            int mDayCals = Convert.ToInt32(Calculations.Cals(bMR, "moderate"));
+            int hDayCals = Convert.ToInt32(Calculations.Cals(bMR,"hard"));
             
             // Instantiate objects 
             var objRDayMacros = Calculations.Macros(rDayCals, weight, "rest");
             var objLDayMacros = Calculations.Macros(lDayCals, weight, "light");
             var objMDayMacros = Calculations.Macros(mDayCals, weight, "moderate");
             var objHDayMacros = Calculations.Macros(hDayCals, weight, "hard");
-            SetMacros restDayMacros = new SetMacros();
+            var restDayMacros = new SetMacros();
             restDayMacros.Protein = objRDayMacros.Item1;
             restDayMacros.Carbs = objRDayMacros.Item2;
             restDayMacros.Fats = objRDayMacros.Item3;
             restDayMacros.Calories = Convert.ToInt32(objRDayMacros.Item4);
-            SetMacros lightDayMacros = new SetMacros();
+            var lightDayMacros = new SetMacros();
             lightDayMacros.Protein = objLDayMacros.Item1;
             lightDayMacros.Carbs = objLDayMacros.Item2;
             lightDayMacros.Fats = objLDayMacros.Item3;
@@ -54,7 +54,7 @@ namespace MacroCalcHttp
             moderateDayMacros.Carbs = objMDayMacros.Item2;
             moderateDayMacros.Fats = objMDayMacros.Item3;
             moderateDayMacros.Calories = Convert.ToInt32(objMDayMacros.Item4);
-            SetMacros hardDayMacros = new SetMacros();
+            var hardDayMacros = new SetMacros();
             hardDayMacros.Protein = objHDayMacros.Item1;
             hardDayMacros.Carbs = objHDayMacros.Item2;
             hardDayMacros.Fats = objHDayMacros.Item3;
@@ -66,7 +66,7 @@ namespace MacroCalcHttp
             macros.moderateDayMacros = moderateDayMacros;
             macros.hardDayMacros = hardDayMacros;
 
-            string json = JsonConvert.SerializeObject(macros, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(macros, Formatting.Indented);
 
             return new OkObjectResult(json);
 
