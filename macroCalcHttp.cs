@@ -69,7 +69,6 @@ namespace MacroCalcHttp
             var json = JsonConvert.SerializeObject(macros, Formatting.Indented);
 
             return new OkObjectResult(json);
-
         }
     }
 }
