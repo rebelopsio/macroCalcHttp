@@ -11,7 +11,7 @@
 <div>
 <h2>Current form takes the following variables:</h2>
   <ul>
-    <li>sex - This is biological sex and based on the two Mifflin-St. Jeor equations. 
+    <li>sex - Accepted values: male, female. 
     <li>age - Age in years.
     <li>heightInches - Height in inches.
     <li>weight - Weight in pounds.
