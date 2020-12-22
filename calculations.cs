@@ -26,22 +26,24 @@ namespace MacroCalcHttp
         
         public static double Cals(double BMR, string type)
         {
-            var calories = BMR;
+            double multiplier = 0.0;
             switch (type)
             {
                 case "rest":
-                    calories = BMR * 1.2;
+                    multiplier = 1.2;
                     break;
                 case "light":
-                    calories = BMR * 1.375;
+                    multiplier = 1.375;
                     break;
                 case "moderate":
-                    calories = BMR * 1.55;
+                    multiplier = 1.55;
                     break;
                 case "hard":
-                    calories = BMR * 1.725;
+                    multiplier = 1.725;
                     break;
             }
+
+            double calories = BMR * multiplier;
             return calories;
         }
 

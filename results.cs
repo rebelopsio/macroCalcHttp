@@ -11,9 +11,10 @@ namespace MacroCalcHttp{
     public class Results {
         public DateTime CreatedDate = DateTime.Now;
         public int BasalMetabolicRate { get; set; }
-        public SetMacros restDayMacros;
-        public SetMacros lightDayMacros;
-        public SetMacros moderateDayMacros;
-        public SetMacros hardDayMacros;
+        public SetMacros restDayMacros = new SetMacros();
+        public SetMacros lightDayMacros = new SetMacros();
+        public SetMacros moderateDayMacros = new SetMacros();
+        public SetMacros hardDayMacros = new SetMacros();
+
     }
 }
